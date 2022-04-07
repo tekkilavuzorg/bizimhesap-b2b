@@ -48,17 +48,17 @@ class InvoiceProduct
      *
      * @var float
      */
-    protected $net;
+    public $net;
 
     /** @var float */
-    protected $tax;
+    public $tax;
 
     /**
      * Net + vergi
      *
      * @var float
      */
-    protected $total;
+    public $total;
 
     public function calculateValues()
     {
@@ -66,7 +66,7 @@ class InvoiceProduct
 
         $this->grossPrice = $this->round($this->unitPrice * $this->quantity);
 
-        $this->net = $this->round(($this->grossPrice - ($this->grossPrice / (1 + ($this->taxRate / 100)) * ($this->taxRate / 100))) - $discount_without_tax);
+        $this->net = $this->round($this->grossPrice - $discount_without_tax);
 
         $this->tax = $this->round(($this->grossPrice - $this->discount) - $this->net);
 
