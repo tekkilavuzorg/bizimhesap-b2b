@@ -68,7 +68,7 @@ class InvoiceProduct
 
         $this->net = $this->round($this->grossPrice - $discount_without_tax);
 
-        $this->tax = $this->round(($this->grossPrice - $this->discount) - $this->net);
+        $this->tax = $this->round(($this->grossPrice * ($this->taxRate / 100)));
 
         $this->total = $this->round($this->net + $this->tax);
     }
